@@ -63,14 +63,10 @@
   /* Upload Latitude/Longitude markers from data.csv file, show Title in pop-up, and override initial center and zoom to fit all in map */
    var customLayer = L.geoJson(null, {
     onEachFeature: function(feature, layer) {
-      layer.bindPopup(feature.properties.price);
+      layer.bindPopup(feature.properties.price,name);
      }
     });
-    var customLayer = L.geoJson(null, {
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup(feature.properties.name);
-     }
-    });
+    
    var runLayer = omnivore.csv('data.csv', null, customLayer)
    .on('ready', function() {
     map.fitBounds(runLayer.getBounds());
